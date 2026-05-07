@@ -1,0 +1,27 @@
+{
+  "name": "evo-terminal-server",
+  "version": "0.1.0",
+  "description": "Terminal bridge for the EvoNexus dashboard — spawns claude CLI sessions over HTTP/WebSocket",
+  "private": true,
+  "main": "src/server.js",
+  "bin": {
+    "evo-terminal-server": "./bin/server.js"
+  },
+  "scripts": {
+    "start": "node bin/server.js",
+    "dev": "node bin/server.js --dev",
+    "test": "node --test",
+    "postinstall": "chmod +x node_modules/node-pty/prebuilds/darwin-arm64/spawn-helper node_modules/node-pty/prebuilds/darwin-x64/spawn-helper 2>/dev/null || true"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "0.2.119",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "node-pty": "^1.0.0",
+    "uuid": "^10.0.0",
+    "ws": "^8.18.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

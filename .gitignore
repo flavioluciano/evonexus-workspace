@@ -1,0 +1,43 @@
+# ── Secrets & credentials ──────────────────────────────────────────
+config/.env
+.env
+
+# ── Python ─────────────────────────────────────────────────────────
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# ── Runtime logs & scheduler state ─────────────────────────────────
+ADWs/logs/
+*.pid
+
+# ── Database ────────────────────────────────────────────────────────
+dashboard/data/
+*.db
+*.db-shm
+*.db-wal
+
+# ── OAuth tokens ────────────────────────────────────────────────────
+social-auth/
+
+# ── Agent memory & user data (private) ─────────────────────────────
+.claude/agent-memory/
+.claude/settings.local.json
+memory/
+
+# ── Workspace data (reports, plans, logs — not source code) ─────────
+workspace/
+
+# ── OS & editor ─────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

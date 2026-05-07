@@ -1,0 +1,104 @@
+{
+  "active_provider": "anthropic",
+  "providers": {
+    "anthropic": {
+      "name": "Anthropic (Claude nativo)",
+      "description": "Claude Code oficial via Anthropic API",
+      "cli_command": "claude",
+      "env_vars": {},
+      "requires_logout": false
+    },
+    "openrouter": {
+      "name": "OpenRouter",
+      "description": "200+ modelos via OpenRouter (Claude, GPT, Gemini, Llama, etc.)",
+      "cli_command": "openclaude",
+      "env_vars": {
+        "CLAUDE_CODE_USE_OPENAI": "1",
+        "OPENAI_BASE_URL": "",
+        "OPENAI_API_KEY": "",
+        "OPENAI_MODEL": ""
+      },
+      "default_base_url": "https://openrouter.ai/api/v1",
+      "default_model": "anthropic/claude-sonnet-4",
+      "requires_logout": true
+    },
+    "omnirouter": {
+      "name": "OMNIROUTER",
+      "description": "OpenAI-compatible custom provider (URL, API Key e Model).",
+      "cli_command": "openclaude",
+      "env_vars": {
+        "CLAUDE_CODE_USE_OPENAI": "1",
+        "OPENAI_BASE_URL": "",
+        "OPENAI_API_KEY": "",
+        "OPENAI_MODEL": ""
+      },
+      "default_base_url": "",
+      "default_model": "",
+      "requires_logout": true
+    },
+    "openai": {
+      "name": "OpenAI (API Key)",
+      "description": "GPT-4.x / GPT-5.x via API Key da OpenAI",
+      "cli_command": "openclaude",
+      "env_vars": {
+        "CLAUDE_CODE_USE_OPENAI": "1",
+        "OPENAI_API_KEY": "",
+        "OPENAI_MODEL": ""
+      },
+      "default_model": "gpt-4.1",
+      "requires_logout": true
+    },
+    "codex_auth": {
+      "name": "OpenAI Codex (OAuth)",
+      "description": "GPT-5.x via ChatGPT Codex — login OAuth, sem API key",
+      "cli_command": "openclaude",
+      "env_vars": {
+        "CLAUDE_CODE_USE_OPENAI": "1",
+        "OPENAI_MODEL": "codexplan"
+      },
+      "default_model": "codexplan",
+      "auth_type": "oauth",
+      "auth_file": "~/.codex/auth.json",
+      "requires_logout": true,
+      "setup_hint": "Use o botão Login para autenticar via OAuth do ChatGPT"
+    },
+    "gemini": {
+      "name": "Google Gemini (em breve)",
+      "description": "Gemini 2.5 Pro/Flash via Google AI",
+      "cli_command": "openclaude",
+      "env_vars": {
+        "CLAUDE_CODE_USE_GEMINI": "1",
+        "GEMINI_API_KEY": "",
+        "GEMINI_MODEL": ""
+      },
+      "default_model": "gemini-2.5-pro",
+      "requires_logout": true,
+      "coming_soon": true
+    },
+    "bedrock": {
+      "name": "AWS Bedrock (em breve)",
+      "description": "Claude via AWS Bedrock",
+      "cli_command": "openclaude",
+      "env_vars": {
+        "CLAUDE_CODE_USE_BEDROCK": "1",
+        "AWS_REGION": "",
+        "AWS_BEARER_TOKEN_BEDROCK": ""
+      },
+      "requires_logout": true,
+      "coming_soon": true
+    },
+    "vertex": {
+      "name": "Google Vertex AI (em breve)",
+      "description": "Claude via Google Cloud Vertex AI",
+      "cli_command": "openclaude",
+      "env_vars": {
+        "CLAUDE_CODE_USE_VERTEX": "1",
+        "ANTHROPIC_VERTEX_PROJECT_ID": "",
+        "CLOUD_ML_REGION": ""
+      },
+      "default_region": "us-east5",
+      "requires_logout": true,
+      "coming_soon": true
+    }
+  }
+}

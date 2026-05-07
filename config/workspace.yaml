@@ -1,0 +1,12 @@
+agents: {}
+chat:
+  trustMode: true
+dashboard:
+  port: 8080
+integrations: {}
+workspace:
+  company: FH Tech
+  language: pt-BR
+  name: FH Tech Workspace
+  owner: Flavio Costa
+  timezone: America/Sao_Paulo

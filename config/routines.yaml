@@ -1,0 +1,236 @@
+# EvoNexus — Custom Routines
+# FH Tech Workspace
+#
+# Formato:
+#   daily:   time: "HH:MM"  ou  interval: <minutos>
+#   weekly:  day: <weekday> | days: [list]  +  time: "HH:MM"
+#   monthly: day_of_month: <1-28>  +  time: "HH:MM"
+#
+# Scripts devem existir em: ADWs/routines/custom/{script}
+# enabled: false = agendado mas não executa (placeholder para scripts futuros)
+#
+# Rotinas core (hardcoded no scheduler.py, não precisam estar aqui):
+#   good_morning.py  →  07:00 diário
+#   end_of_day.py    →  21:00 diário
+#   memory_sync.py   →  21:15 diário (hardcoded)
+#   memory_lint.py   →  domingo 09:00
+#   backup.py        →  21:00 diário
+# ─────────────────────────────────────────────────────────────────
+
+# ══════════════════════════════════════════════════════════════════
+# DIÁRIAS
+# ══════════════════════════════════════════════════════════════════
+daily:
+
+  # ── Brain / Knowledge Base (scripts existentes) ───────────────
+
+  - name: Brain Sync Transcripts
+    script: brain_sync_transcripts.py
+    time: "06:30"
+    enabled: true
+    # Copia transcripts do Claude Code CLI para o brain repo
+
+  - name: Brain Health
+    script: brain_health.py
+    time: "22:00"
+    enabled: true
+    # Processa fila de sync pendente do brain repo
+
+  - name: Brain KB Mirror
+    script: brain_kb_mirror.py
+    time: "22:30"
+    enabled: true
+    # Exporta a Knowledge Base para markdown
+
+  - name: Brain Tag Daily
+    script: brain_tag_daily.py
+    time: "23:00"
+    enabled: true
+    # Cria snapshot tag diária no brain repo (git)
+
+  # ── Rotinas de negócio (aguardando scripts) ────────────────────
+
+  - name: Review Todoist
+    script: review_todoist.py
+    time: "06:50"
+    enabled: false
+    # @clawdia — revisa tarefas do Todoist antes do briefing
+
+  - name: Email Triage
+    script: email_triage.py
+    time: "07:15"
+    enabled: false
+    # @clawdia — triagem de emails prioritários do dia
+
+  - name: Sync Meetings
+    script: sync_meetings.py
+    interval: 30
+    enabled: false
+    # @clawdia — sincroniza reuniões do Fathom a cada 30min
+
+  - name: Social Analytics
+    script: social_analytics.py
+    time: "18:00"
+    enabled: false
+    # @pixel — relatório diário de analytics (YouTube, Instagram, LinkedIn, X)
+
+  - name: Licensing Daily
+    script: licensing_daily.py
+    time: "18:30"
+    enabled: false
+    # @atlas — monitoramento diário de licenciamento (instâncias, geo, versões)
+
+  - name: Financial Pulse
+    script: financial_pulse.py
+    time: "19:00"
+    enabled: false
+    # @flux — pulse financeiro diário (Stripe, Omie, Bling, Asaas)
+
+  - name: Community Pulse
+    script: community_pulse.py
+    time: "20:00"
+    enabled: false
+    # @pulse — pulse diário da comunidade (Discord, WhatsApp)
+
+  - name: FAQ Sync
+    script: faq_sync.py
+    time: "20:15"
+    enabled: false
+    # @pulse — sincroniza perguntas recorrentes para o FAQ
+
+  - name: Consolidated Dashboard
+    script: consolidated_dashboard.py
+    time: "21:30"
+    enabled: false
+    # @clawdia — gera dashboard 360 consolidado
+
+
+# ══════════════════════════════════════════════════════════════════
+# SEMANAIS
+# ══════════════════════════════════════════════════════════════════
+weekly:
+
+  # ── Brain / Knowledge Base (script existente) ─────────────────
+
+  - name: Brain Tag Weekly
+    script: brain_tag_weekly.py
+    day: sunday
+    time: "23:30"
+    enabled: true
+    # Cria snapshot tag semanal no brain repo (git)
+
+  # ── Rotinas de negócio (aguardando scripts) ────────────────────
+
+  - name: Financial Weekly
+    script: financial_weekly.py
+    day: friday
+    time: "07:30"
+    enabled: false
+    # @flux — relatório financeiro semanal
+
+  - name: Licensing Weekly
+    script: licensing_weekly.py
+    day: friday
+    time: "07:45"
+    enabled: false
+    # @atlas — relatório semanal de licenciamento
+
+  - name: Social Analytics Weekly
+    script: social_analytics_weekly.py
+    day: friday
+    time: "08:15"
+    enabled: false
+    # @pixel — analytics semanal de redes sociais
+
+  - name: Trends
+    script: trends.py
+    day: friday
+    time: "08:30"
+    enabled: false
+    # @clawdia — análise de tendências da semana
+
+  - name: Strategy Digest
+    script: strategy_digest.py
+    day: friday
+    time: "09:00"
+    enabled: false
+    # @sage — digest estratégico semanal
+
+  - name: Linear Review
+    script: linear_review.py
+    days: [monday, wednesday, friday]
+    time: "09:00"
+    enabled: false
+    # @atlas — revisão de issues do Linear (seg/qua/sex)
+
+  - name: GitHub Review
+    script: github_review.py
+    days: [monday, wednesday, friday]
+    time: "09:15"
+    enabled: false
+    # @atlas — revisão de PRs e issues do GitHub (seg/qua/sex)
+
+  - name: Community Weekly
+    script: community_weekly.py
+    day: monday
+    time: "09:30"
+    enabled: false
+    # @pulse — pulse semanal da comunidade
+
+  - name: Learning Review Weekly
+    script: learning_weekly.py
+    day: sunday
+    time: "09:45"
+    enabled: false
+    # @lumen — revisão semanal de fatos com spaced repetition
+
+  - name: Health Check-in
+    script: health_checkin.py
+    day: sunday
+    time: "10:00"
+    enabled: false
+    # @kai — check-in semanal de saúde e hábitos
+
+
+# ══════════════════════════════════════════════════════════════════
+# MENSAIS (dia 1 do mês)
+# ══════════════════════════════════════════════════════════════════
+monthly:
+
+  - name: Monthly Close Kickoff
+    script: monthly_close_kickoff.py
+    day_of_month: 1
+    time: "09:00"
+    enabled: false
+    # @flux — kickoff do fechamento mensal
+
+  - name: Community Monthly
+    script: community_monthly.py
+    day_of_month: 1
+    time: "10:00"
+    enabled: false
+    # @pulse — pulse mensal da comunidade
+
+  - name: Licensing Monthly
+    script: licensing_monthly.py
+    day_of_month: 1
+    time: "10:30"
+    enabled: false
+    # @atlas — relatório mensal de licenciamento
+
+  - name: Social Analytics Monthly
+    script: social_analytics_monthly.py
+    day_of_month: 1
+    time: "11:00"
+    enabled: false
+    # @pixel — analytics mensal de redes sociais
+
+  - name: WhatsApp Monthly Check-in
+    script: whatsapp_monthly_check.py
+    day_of_month: 5
+    time: "10:00"
+    enabled: true
+    # @nex/@zara — disparo mensal de WhatsApp para contatos ativos do CRM
+    # Mensagem: "Olá [Nome]! Passando pra saber se você precisa de algo..."
+    # Contatos: workspace/data/contacts_whatsapp.json
+    # Log: workspace/data/whatsapp_sends_log.json
