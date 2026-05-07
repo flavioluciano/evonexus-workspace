@@ -48,6 +48,18 @@ daily:
     enabled: true
     # Cria snapshot tag diária no brain repo (git)
 
+  # ── CRM Pipeline Sync ─────────────────────────────────────────
+
+  - name: CRM Pipeline Sync
+    script: crm_pipeline_sync.py
+    interval: 60
+    enabled: true
+    # Detecta novos contatos no Evo CRM e tenta adicioná-los ao
+    # pipeline "capitacao" (1fd69461) no stage "novo lead".
+    # Enquanto o bug pipeline_items POST estiver ativo, queues
+    # os contatos pendentes em workspace/data/crm_pipeline_pending.json
+    # para adição manual via xfoodcrm.fhtech.app.br
+
   # ── Rotinas de negócio (aguardando scripts) ────────────────────
 
   - name: Review Todoist
